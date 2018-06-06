@@ -9,22 +9,73 @@
 </head>
 <body>
     <center><h3>Employee ID Card Form</h3></center>
-    <form>
+    <form name="validation">
        <div class="form-group">
            <label for="firstName">FirstName</label>
            <input type="text" id="firstName">
            <span id="errorMessageForFirstName">Please Enter the valid First name</span>
-        </div>
+        </div><br>
        <div class="form-group">
            <label for="fullName">FullName</label>
            <input type="text" id="fullName">
            <span id="errorMessageForFullName">Please Enter the valid Full name</span>
-        </div>
-        <div class="form-group">
-                <label for="fullName">FullName</label>
-                <input type="text" id="fullName">
-                <span id="errorMessageForFullName">Please Enter the valid Full name</span>
-             </div>
+        </div><br>
+        
+             <div>
+                <label for="designation">Designation</label>
+                <select id="designation" required>
+                        <option value="" selected disabled hidden>Choose here</option>
+                    <option value="Associate Engineer" checked>New Employee</option>
+                    <option value="Systems analyst">Lost</option>
+                    <option value="Network engineer">Defaced</option>
+                    <option value="software architect">Conversion</option>
+                    <option value="Software tester">Designation Change</option>
+                  </select> 
+                <span class="span-for-errors" id="errorMessageForDesignation">Enter your Designation</span><br/><br/>                
+            </div>
+            <div>
+                <label for="emp_no">Employee Number</label>
+                <input type="text" id="emp_no">
+                <span class="span-for-errors" id="errorMessageForEmployeeNumber">Enter valid employee number</span><br/><br/> 
+            </div>
+            <div>
+                <label for="blood">Employee BloodGroup</label>
+                <input type="radio" id="A+" name="blood" value="A+">A+
+                <input type="radio" id="B+" name="blood" value="B+" >B+
+                <input type="radio" id="O+" name="blood" value="O+" >O+
+                <input type="radio" id="AB-" name="blood" value="AB-" >AB-
+                <span class="span-for-errors" id="errorEmployeeBloodGroup">select your blood group</span><br/><br/> 
+            </div>
+            <div>
+                <label for="issues">Reasons for Issues</label>
+                <select id="issues">
+                    <option value="" selected disabled hidden>Choose here</option>
+                    <option value="New Employee" checked>New Employee</option>
+                    <option value="Lost">Lost</option>
+                    <option value="Defaced">Defaced</option>
+                    <option value="Conversion">Conversion</option>
+                    <option value="Designation Change">Designation Change</option>
+                  </select> 
+                  <span class="span-for-errors" id="errorMessageForReasonsforIssues">select your blood group</span><br/><br/> 
+            </div><br>
+           
+            <div>
+                    <label for="email">Email ID(Virtusa)</label>
+                    <input type="text" id="email" required>
+
+            </div><br>
+            <div>
+                    <label for="mobile">Employee Mobile Number</label>
+                    <input type="text" id="mobile" required>
+                  <span class="span-for-errors" id="errorMessageForEmployeeMobileNumber">select your blood group</span><br/><br/> 
+                    
+            </div><br>
+            <div>
+                    <label for="emergency">Emergency Contact Number</label>
+                    <input type="text" id="emergency" required>
+                  <span class="span-for-errors" id="errorMessageForEmployeeEmergencyContactNumber">select your blood group</span><br/><br/> 
+                    
+            </div>
         <div>
             <button type="button" onclick="addDetails()">Add Details</button>
         </div>

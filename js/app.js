@@ -5,6 +5,8 @@ $(function(){
 });
 function addDetails()
 {
+    valid = 0;
+    $("span").hide();
     var validate = validateDetails();
     if(validate)
     {
@@ -16,6 +18,12 @@ function validateDetails()
 {
     validateFirstName();
     validateFullName();
+    validateDesignation();
+    validateEmployeeNumber();    
+    validateReasonsforIssues();
+    validateEmployeeMobileNumber();
+    validateEmployeeEmergencyNumber();
+    validateBloodGroup();
     if(valid == 1)
     {
         return false;
@@ -39,10 +47,102 @@ function validateFullName()
       
    }
 }
+function validateDesignation()
+{
+    if(checkNull("designation"))
+   {
+       valid = 1;
+       showError("errorMessageForDesignation", "designation");
+      
+   }
+}
+function validateEmployeeNumber()
+{
+    if(checkNull("emp_no"))
+   {
+       valid = 1;
+       showError("errorMessageForEmployeeNumber", "emp_no");
+      
+   }
+     else if(checkNumbersOnly("emp_no")) {
+        valid = 1;
+        showError("errorMessageForEmployeeNumber", "emp_no");
+    
+      }
+      else if(checkLength("emp_no", 7)) {
+        valid = 1;
+        showError("errorMessageForEmployeeNumber", "emp_no");
+    
+      }
+
+}
+function validateBloodGroup()
+{   
+    const value = document.validation.blood;
+    for (var i=0; i<value.length; i++) {
+        if (value[i].checked)
+           return;
+     }
+    valid = 1;
+    showError("errorEmployeeBloodGroup", "");
+   
+}
+ function validateReasonsforIssues()
+{
+    if(checkNull("issues"))
+   {
+       valid = 1;
+       showError("errorMessageForReasonsforIssues", "issues");
+      
+   }
+}
+function validateEmployeeMobileNumber()
+{
+    if(checkNull("mobile"))
+   {
+       valid = 1;
+       showError("errorMessageForEmployeeMobileNumber", "mobile");
+      
+   }
+     else if(checkLength("mobile", 10)) {
+        valid = 1;
+        showError("errorMessageForEmployeeMobileNumber", "mobile");
+    
+      }
+}
+function validateEmployeeEmergencyNumber()
+{
+    if(checkLength("emergency", 10)) {
+        valid = 1;
+        showError("errorMessageForEmployeeEmergencyContactNumber", "emergency");
+    
+      }
+}
+
 function checkNull(id)
 {
     const value = $(`#${id}`).val();
-    if(value === '')
+    if(value == null || value == '')
+    {
+        return true;
+    }
+    return false;
+}
+function checkNumbersOnly(id)
+{
+    const pattern="/^[0-9]+$/;"
+    const value=$(`#${id}`).val();
+    if(value.match(pattern))
+    {
+        return true;
+    }
+    return false;
+    
+}
+function checkLength(id, length)
+{
+    const value=$(`#${id}`).val();
+    if(value.length != length)
     {
         return true;
     }
