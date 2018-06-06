@@ -20,9 +20,10 @@ function validateDetails()
     validateFullName();
     validateDesignation();
     validateEmployeeNumber();    
-    validateReasonsforIssues();
+    validateReasonsforIssues();    
     validateEmployeeMobileNumber();
     validateEmployeeEmergencyNumber();
+    validateEmailId();
     validateBloodGroup();
     if(valid == 1)
     {
@@ -96,6 +97,21 @@ function validateBloodGroup()
       
    }
 }
+function validateEmailId()
+{
+    if(checkNull("email"))
+   {
+       valid = 1;
+       showError("errorMessageEmailID", "email");
+      
+   }
+   else if(checkEmail("email")) {
+    valid = 1;
+    showError("errorMessageEmailID", "email");
+       
+   }
+}
+
 function validateEmployeeMobileNumber()
 {
     if(checkNull("mobile"))
@@ -112,7 +128,8 @@ function validateEmployeeMobileNumber()
 }
 function validateEmployeeEmergencyNumber()
 {
-    if(checkLength("emergency", 10)) {
+    if(checkLength("emergency", 10)) 
+    {
         valid = 1;
         showError("errorMessageForEmployeeEmergencyContactNumber", "emergency");
     
@@ -148,6 +165,17 @@ function checkLength(id, length)
     }
     return false;
 }
+function checkEmail(id)
+   {
+    const valid="/^([A-Za-z0-9_\-\.])+\@virtusa.com$/";
+    const value=$(`#${id}`).val();
+    if(value.match(pattern))
+    {
+        return true;
+    }
+    return false;
+   }
+
 function showError(spanId, inputId)
 {
     $(`#${spanId}`).show();
