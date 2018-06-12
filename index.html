@@ -4,26 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="css/app.css">
     <title>Application Frorm for ID</title>
 </head>
 <body>
     <center><h3>Employee ID Card Form</h3></center>
     <form name="validation">
+        <div class="container">
        <div class="form-group">
            <label for="firstName">FirstName</label>
-           <input type="text" id="firstName">
+           <input type="text" class="form-control" id="firstName">
            <span id="errorMessageForFirstName">Please Enter the valid First name</span>
         </div><br>
        <div class="form-group">
            <label for="fullName">FullName</label>
-           <input type="text" id="fullName">
+           <input type="text" class="form-control" id="fullName">
            <span id="errorMessageForFullName">Please Enter the valid Full name</span>
         </div><br>
         
              <div>
                 <label for="designation">Designation</label>
-                <select id="designation" required>
+                <select id="designation" class="form-control" required>
                         <option value="" selected disabled hidden>Choose here</option>
                     <option value="Associate Engineer" checked>New Employee</option>
                     <option value="Systems analyst">Lost</option>
@@ -35,20 +38,22 @@
             </div>
             <div>
                 <label for="emp_no">Employee Number</label>
-                <input type="text" id="emp_no">
+                <input type="text" class="form-control" id="emp_no">
                 <span class="span-for-errors" id="errorMessageForEmployeeNumber">Enter valid employee number</span><br/><br/> 
             </div>
             <div>
                 <label for="blood">Employee BloodGroup</label>
-                <input type="radio" id="A+" name="blood" value="A+">A+
-                <input type="radio" id="B+" name="blood" value="B+" >B+
-                <input type="radio" id="O+" name="blood" value="O+" >O+
-                <input type="radio" id="AB-" name="blood" value="AB-" >AB-
+                <!-- <input type="radio" id="A+" name="blood" class="form-control"  value="A+"> -->
+                <input type="radio" class="form-control " aria-label="A+">A+
+
+                <input type="radio" id="B+" name="blood" class="form-control"  value="B+" >B+
+                <input type="radio" id="O+" name="blood" class="form-control" value="O+" >O+
+                <input type="radio" id="AB-" name="blood" class="form-control" value="AB-" >AB-
                 <span class="span-for-errors" id="errorEmployeeBloodGroup">select your blood group</span><br/><br/> 
             </div>
             <div>
                 <label for="issues">Reasons for Issues</label>
-                <select id="issues">
+                <select class="form-control" id="issues">
                     <option value="" selected disabled hidden>Choose here</option>
                     <option value="New Employee" checked>New Employee</option>
                     <option value="Lost">Lost</option>
@@ -61,26 +66,27 @@
            
             <div>
                     <label for="email">Email ID(Virtusa)</label>
-                    <input type="text" id="email" required>
-                    <span class="span-for-errors" id="errorMessageEmailID">select your Reason for Issues</span><br/><br/> 
+                    <input type="text"class="form-control"  id="email" required>
+                    <span class="span-for-errors" id="errorMessageEmailID">Enter your Email address</span><br/><br/> 
 
             </div><br>
             <div>
                     <label for="mobile">Employee Mobile Number</label>
-                    <input type="text" id="mobile" required>
+                    <input type="text"class="form-control"  id="mobile" required>
                   <span class="span-for-errors" id="errorMessageForEmployeeMobileNumber">select your blood group</span><br/><br/> 
                     
             </div><br>
             <div>
                     <label for="emergency">Emergency Contact Number</label>
-                    <input type="text" id="emergency" required>
+                    <input type="text"class="form-control"  id="emergency" required>
                   <span class="span-for-errors" id="errorMessageForEmployeeEmergencyContactNumber">select your blood group</span><br/><br/> 
                     
             </div>
         <div>
             <button type="button" onclick="addDetails()">Add Details</button>
         </div>
-    </form>
+        </div>
+        </form>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/app.js"></script>

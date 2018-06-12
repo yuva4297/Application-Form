@@ -7,6 +7,7 @@ function addDetails()
 {
     valid = 0;
     $("span").hide();
+
     var validate = validateDetails();
     if(validate)
     {
@@ -38,7 +39,9 @@ function validateFirstName()
         valid = 1;
         showError("errorMessageForFirstName", "firstName");
    }
-}
+  else{
+   $('#firstName').css("border","solid 1px green");
+}}
 function validateFullName()
 {
    if(checkNull("fullName"))
@@ -47,6 +50,9 @@ function validateFullName()
        showError("errorMessageForFullName", "fullName");
       
    }
+   else{
+    $('#fullName').css("border","solid 1px green");
+ }
 }
 function validateDesignation()
 {
@@ -55,7 +61,9 @@ function validateDesignation()
        valid = 1;
        showError("errorMessageForDesignation", "designation");
       
-   }
+   } else{
+    $('#designation').css("border","solid 1px green");
+ }
 }
 function validateEmployeeNumber()
 {
@@ -75,7 +83,9 @@ function validateEmployeeNumber()
         showError("errorMessageForEmployeeNumber", "emp_no");
     
       }
-
+      else{
+        $('#emp_no').css("border","solid 1px green");
+     }
 }
 function validateBloodGroup()
 {   
@@ -96,20 +106,26 @@ function validateBloodGroup()
        showError("errorMessageForReasonsforIssues", "issues");
       
    }
+   else{
+    $('#issues').css("border","solid 1px green");
+ }
 }
 function validateEmailId()
 {
-    if(checkNull("email"))
+    if(checkNull("email")||checkEmail("email"))
    {
        valid = 1;
        showError("errorMessageEmailID", "email");
       
    }
-   else if(checkEmail("email")) {
-    valid = 1;
-    showError("errorMessageEmailID", "email");
+   else{
+    $('#email').css("border","solid 1px green");
+ }
+//  if(checkEmail("email")) {
+//     valid = 1;
+//     showError("errorMessageEmailID", "email");
        
-   }
+//    }
 }
 
 function validateEmployeeMobileNumber()
@@ -118,13 +134,17 @@ function validateEmployeeMobileNumber()
    {
        valid = 1;
        showError("errorMessageForEmployeeMobileNumber", "mobile");
-      
+        
    }
-     else if(checkLength("mobile", 10)) {
+     else if(checkNumbersOnly("mobile")) {
         valid = 1;
         showError("errorMessageForEmployeeMobileNumber", "mobile");
     
       }
+      else{
+        $('#mobile').css("border","solid 1px green");
+     }
+
 }
 function validateEmployeeEmergencyNumber()
 {
@@ -134,6 +154,9 @@ function validateEmployeeEmergencyNumber()
         showError("errorMessageForEmployeeEmergencyContactNumber", "emergency");
     
       }
+      else{
+        $('#emergency').css("border","solid 1px green");
+     }
 }
 
 function checkNull(id)
@@ -147,13 +170,15 @@ function checkNull(id)
 }
 function checkNumbersOnly(id)
 {
-    const pattern="/^[0-9]+$/;"
+    const pattern=/^[1-9][0-9]{9}/;
     const value=$(`#${id}`).val();
-    if(value.match(pattern))
+    const result=value.match(pattern);
+    if(result==null)
     {
         return true;
     }
     return false;
+    
     
 }
 function checkLength(id, length)
@@ -166,10 +191,13 @@ function checkLength(id, length)
     return false;
 }
 function checkEmail(id)
-   {
-    const valid="/^([A-Za-z0-9_\-\.])+\@virtusa.com$/";
-    const value=$(`#${id}`).val();
-    if(value.match(pattern))
+  
+   {  const value=$(`#${id}`).val();
+    const valid=/^[a-z|A-Z][a-z|A-Z|0-9|]+@virtusa.com/;
+    // "/^([A-Za-z0-9_\-\.])+\@[virtusa.com]$/";
+    const result=value.match(valid);
+    console.log(result);
+    if(result==null)
     {
         return true;
     }
